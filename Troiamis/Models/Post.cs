@@ -12,6 +12,7 @@ namespace Troiamis.Models
         string postTitle { get; set; }
         string postContent { get; set; }
         DateTime timeStamp { get; set; }
+        long postID { get; set; }
         int ratings { get; set; }
     }
 }
