@@ -12,6 +12,7 @@ body {
     height: auto;
     padding: 10px;
     font-family: 'Arapey',;
+    margin: 10px;
 }
 
 footer {
@@ -23,3 +24,11 @@ footer {
     width: 50%;
     padding: 2px;
 }
+
+#createProfileContainer, #loginContainer {
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+
