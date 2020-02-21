@@ -1,15 +1,17 @@
-﻿@import url("~/css/StyleSheet.scss");
+﻿@import url('https://fonts.googleapis.com/css?family=Arapey&display=swap');
+
 html {
     background-color: #252229;
 }
 
     html body {
-        color: #F1F2F3;
+        /*color: #F1F2F3;*/
     }
 
 body {
     height: auto;
     padding: 10px;
+    font-family: 'Arapey',;
 }
 
 footer {

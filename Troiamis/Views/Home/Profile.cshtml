@@ -37,6 +37,33 @@
         </div>
     </div>
     <div id="posts" class="p-2">
+        <h2>Posts</h2>
+        <div id="postForm">
+
+            <form>
+                <div class="form-group">
+                    <label for="">Write Something...</label>
+                    <input type="text" class="form-control" id="">
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Upload Image
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="custom-file dropdown-item">
+                            <input type="file" class="custom-file-input" id="" required>
+                            <label class="custom-file-label" for="">Choose file...</label>
+                        </div>
+
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+        <div class="container" id="postContainer">
+
+        </div>
         @*list of posts and optioin to write one*@
     </div>
 
