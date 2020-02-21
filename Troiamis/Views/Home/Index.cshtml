@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Troiamis
+@using Troiamis.Models
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,6 +8,7 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 <div>
+
     <form>
         <div class="form-group">
             <label for="">Email address</label>
@@ -31,6 +34,8 @@
             <label class="form-check-label" for="">Email Updates</label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <a asp-controller="Home" asp-action="">Login</a>
     </form>
 
 </div>
