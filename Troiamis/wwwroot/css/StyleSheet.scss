@@ -1,9 +1,13 @@
 ﻿$primary-color: #252229;
+$primary-font-color: #F1F2F3;
+
 
 html {
     background-color: $primary-color;
     body{
-        color: #F1F2F3;
+        color: $primary-font-color;
     }
 }
+
+
 
