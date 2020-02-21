@@ -1,10 +1,9 @@
 ﻿$primary-color: #252229;
 
-html body {
+html {
     background-color: $primary-color;
+    body{
+        color: #F1F2F3;
+    }
 }
 
-nav{
-    background-color: #919287;
-    color: #F1F2F3;
-}
