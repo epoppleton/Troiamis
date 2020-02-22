@@ -7,7 +7,7 @@ namespace Troiamis.Models
 {
     public class PostsGallery
     {
-        public static IEnumerable<Post> pagePosts;
+        public static IEnumerable<ModelsCombined.Post> pagePosts;
 
         public void populatePage()
         {
