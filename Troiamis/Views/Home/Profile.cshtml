@@ -1,5 +1,6 @@
 ﻿@using Troiamis
 @using Troiamis.Models
+@model User
 @{
     ViewData["Title"] = "Profile";
 }
@@ -39,7 +40,6 @@
     <div id="posts" class="p-2">
         <h2>Posts</h2>
         <div id="postForm">
-
             <form>
                 <div class="form-group">
                     <label for="">Write Something...</label>
@@ -62,9 +62,30 @@
 
         </div>
         <div class="container" id="postContainer">
-
+            <div class="list-group">
+            @*list of posts and optioin to write one*@
+                <div class="list-group-item card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            @*if post has image*@
+                            <img src="..." class="card-img">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                @*poster name*@
+                                <h5 class="card-title">Card title</h5>
+                                @*post text*@
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                @*ratings*@
+                                <button type="button" class="btn btn-outline-primary">Like</button>
+                                @*post timestamp*@
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        @*list of posts and optioin to write one*@
     </div>
 
 </div>
