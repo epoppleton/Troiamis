@@ -1,0 +1,32 @@
+﻿html {
+    background-color: #252229;
+}
+
+    html body {
+        /*color: #F1F2F3;*/
+    }
+
+body {
+    height: auto;
+    padding: 10px;
+    font-family: 'Arapey',;
+    margin: 10px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+#profileImage {
+    width: 50%;
+    padding: 2px;
+}
+
+#createProfileContainer, #loginContainer {
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+

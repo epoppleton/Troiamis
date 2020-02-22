@@ -45,5 +45,15 @@ namespace Troiamis.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
     }
 }
