@@ -20,8 +20,8 @@ namespace Troiamis.ModelsCombined
         long postID { get; set; }
         int ratings { get; set; }
     }
-
-    public class PostsGallery
+     
+    public class PostsGallery 
     {
         public static IEnumerable<Post> pagePosts;
 
