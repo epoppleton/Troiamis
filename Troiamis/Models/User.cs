@@ -11,6 +11,6 @@ namespace Troiamis.Models
         string password { get; set; }
         string userEmail { get; set; }
         int age { get; set; }
-        string avatarImageString { get; set; }
+        public string avatarImageString { get; set; }
     }
 }
