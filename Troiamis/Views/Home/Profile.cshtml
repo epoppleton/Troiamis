@@ -11,42 +11,51 @@
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                     <a class="nav-link" id="v-pills-account-tab" data-toggle="pill" href="#v-pills-account" role="tab" aria-controls="v-pills-account" aria-selected="false">Account Settings</a>
                     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Logout</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        @*links to home page*@
-                    </div>
                     <div class="tab-pane fade" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
                         @*opens account settings... should this be here or on a seperate page?*@
+                        <form style="width: 45%;">
+                            <div class="form-group">
+                                <label @*asp-for="userEmail"*@>Email address</label>
+                                <input @*asp-for="userEmail" value="@Model.userEmail"*@ type="email" class="form-control" id="" aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label @*asp-for="userName"*@>User Name</label>
+                                    <input @*asp-for="userName" value="@Model.userName"*@ type="text" class="form-control" id="inputUserName">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label @*asp-for="Age"*@>Age</label>
+                                    <input @*asp-for="Age" value="@Model.age"*@ type="number" class="form-control" id="inputAge">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label @*asp-for="password"*@>Password</label>
+                                <input @*asp-for="password" value="@Model.password"*@ type="password" class="form-control" id="inputPassword">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <br />
+                        </form>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        @*links to home page*@
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><a asp-controller="Home" asp-action="Index">Home Page</a></div>
                         @*logout link instead*@
-                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"></div>
                 </div>
             </div>
         </div>
     </div>
     <div id="profileImage-container" class="p-2">
-        @if (!@Model.Equals(null))
-        {
-            <div class="text-center">
-                <img class="rounded-circle" src="@Model.avatarImageString" srcset="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" id="profileImage" />
-                @*profile image*@
-            </div>
-
-        }
-        else
-        {
-            <div class="text-center">
-                <img class="rounded-circle" src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" id="profileImage" />
-                @*profile image*@
-            </div>
-        }
+        <div class="text-center">
+            @*profile image*@
+            <img class="rounded-circle" @*src="@Model.avatarImageString"*@ src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" id="profileImage" />
+        </div>
     </div>
     <div id="posts" class="p-2">
         <h2>Posts</h2>
@@ -72,28 +81,35 @@
             </form>
 
         </div>
-        <div class="container" id="postContainer">
-            <div class="list-group" data-spy="scroll">
-                @*list of posts and optioin to write one*@
-                <div class="list-group-item card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            @*if post has image*@
-                            <img src="..." class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                @*poster name*@
-                                <h5 class="card-title">Card title</h5>
-                                @*post text*@
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                @*ratings*@
-                                <button type="button" class="btn btn-outline-primary"><b id="likeNumber">0</b>Like's</button>
-                                @*post timestamp*@
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="container">
+            <div data-spy="scroll" data-offset="0" id="postContainer">
+                <div class="list-group">
+
+
+
+                    @*list of posts and optioin to write one*@
+                    <div class="list-group-item card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                @*if post has image*@
+                                <img src="..." class="card-img">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    @*poster name*@
+                                    <h5 class="card-title">Card title</h5>
+                                    @*post text*@
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    @*ratings*@
+                                    <button type="button" class="btn btn-outline-primary"><b id="likeNumber">0</b>Like's</button>
+                                    @*post timestamp*@
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
