@@ -27,9 +27,13 @@ namespace Troiamis.ModelsCombined
 
     public class Post
     {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "filename cannot be empty")]
         public string fileName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "postName cannot be empty")]
         public string posterName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "post must have a title")]
         public string postTitle { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "post must have conntent")]
         public string postContent { get; set; }
         public DateTime timeStamp { get; set; }
         [Key]
@@ -50,9 +54,13 @@ namespace Troiamis.ModelsCombined
     public class User
     {
         [Key]
+        [StringLength(64, ErrorMessage = "user name must be within the valid character count (6 - 64)", MinimumLength = 6)]
         public string userName { get; set; }
+        [Required (AllowEmptyStrings = false, ErrorMessage = "Password cannot be empty")]
         public string password { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Email cannot be empty")]
         public string userEmail { get; set; }
+        [Range(13, int.MaxValue, ErrorMessage = "You must be at least 13 years old")]
         public int age { get; set; }
         public string avatarImageString { get; set; }
     }
