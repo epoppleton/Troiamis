@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Troiamis.Models
 {
-    public class ImagePost : Post
+    public class ImagePost : ModelsCombined.Post
     {
         string imageString { get; set; }
     }
