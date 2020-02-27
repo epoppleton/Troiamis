@@ -1,3 +1,4 @@
+@model Troiamis.ModelsCombined.User
 @using Troiamis
 @using Troiamis.Models
 @{
@@ -6,14 +7,14 @@
 
 <h1>Login</h1>
 <div id="loginContainer">
-    <form style="width: 50%;">
+    <form style="width: 50%;" action="CheckUser" method="post">
         <div class="form-group">
-            <label @*asp-for="userEmail"*@>Email address</label>
-            <input @*asp-for="userEmail"*@ type="email" class="form-control" id="" aria-describedby="emailHelp">
+            <label asp-for="userName">Username</label>
+            <input asp-for="userName" type="email" class="form-control" id="userName" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
-            <label @*asp-for="password"*@>Password</label>
-            <input @*asp-for="password"*@ type="password" class="form-control" id="">
+            <label asp-for="password"*@>Password</label>
+            <input asp-for="password"*@ type="password" class="form-control" id="password">
         </div>
         <br/>
         <button type="submit" class="btn btn-primary">Submit</button>

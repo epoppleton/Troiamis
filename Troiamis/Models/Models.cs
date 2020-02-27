@@ -16,7 +16,7 @@ namespace Troiamis.ModelsCombined
         public DbSet<Post> Posts { get; set; }
         //public DbSet<ImagePost> ImagePosts { get; set; }
         //public DbSet<PostsGallery> PostsGalleries { get; set; }
-        //public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 
 
@@ -35,7 +35,7 @@ namespace Troiamis.ModelsCombined
         public long postID { get; set; }
         public int ratings { get; set; }
     }
-     
+
     //public class PostsGallery 
     //{
     //    public static IEnumerable<Post> pagePosts;
@@ -46,12 +46,12 @@ namespace Troiamis.ModelsCombined
     //    }
     //}
 
-    //public class User
-    //{
-    //    string userName { get; set; }
-    //    string password { get; set; }
-    //    string userEmail { get; set; }
-    //    int age { get; set; }
-    //    string avatarImageString { get; set; }
-    //}
+    public class User
+    {
+        public string userName { get; set; }
+        public string password { get; set; }
+        public string userEmail { get; set; }
+        public int age { get; set; }
+        public string avatarImageString { get; set; }
+    }
 }

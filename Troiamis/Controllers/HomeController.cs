@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Troiamis.Models;
@@ -29,15 +30,6 @@ namespace Troiamis.Controllers
 
         public IActionResult Index()
         {
-            Post P = new Post { fileName = "Test", posterName = "Test", postTitle = "Test", postContent = "This is a test", timeStamp = DateTime.Now, postID = 0, ratings = 1 };
-            DB.Posts.Add(P);
-            DB.SaveChanges();
-
-            return View();
-        }
-
-        public IActionResult Login()
-        {
             return View();
         }
 
@@ -61,6 +53,25 @@ namespace Troiamis.Controllers
 
         public IActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CheckUser()
+        {
+            ModelsCombined.User user = DB.Users.Where(u => u.userName == Request.Form["userName"] && u.password == Request.Form["password"]).FirstOrDefault();
+            Debug.WriteLine(Request.Form["userName"].ToString());
+            Debug.WriteLine(Request.Form["password"].ToString());
+            HttpContext.Session.SetString("username", Request.Form["userName"].ToString());
+            if (user != null)
+            {
+                
+            }
+            else
+            {
+                RedirectToAction("Login");
+            }
+            
             return View();
         }
 
