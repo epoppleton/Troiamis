@@ -28,6 +28,7 @@ namespace Troiamis
         {
             services.AddDbContext<TroiamisDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.AddControllersWithViews();
+            services.AddSession();
 
         }
 
@@ -42,6 +43,8 @@ namespace Troiamis
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseSession();
+
             app.UseStaticFiles();
 
             app.UseRouting();

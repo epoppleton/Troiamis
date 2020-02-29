@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Troiamis.Models;
@@ -29,10 +30,6 @@ namespace Troiamis.Controllers
 
         public IActionResult Index()
         {
-            Post P = new Post { fileName = "Test", posterName = "Test", postTitle = "Test", postContent = "This is a test", timeStamp = DateTime.Now, postID = 1, ratings = 1 };
-            DB.Posts.Add(P);
-            DB.SaveChanges();
-
             return View();
         }
 
@@ -57,6 +54,29 @@ namespace Troiamis.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult Login(ModelsCombined.User compare)
+        {
+            ModelsCombined.User user = DB.Users.Where(u => u.userName == compare.userName && u.password == compare.password).FirstOrDefault();
+            Debug.WriteLine(user.userName.ToString());
+            Debug.WriteLine(user.password.ToString());
+
+            if (user != null)
+            {
+                HttpContext.Session.SetString("username", user.userName.ToString());
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public IActionResult Login()
+        {
+            return View();
         }
 
         public IActionResult Profile()
