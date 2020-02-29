@@ -48,8 +48,6 @@ namespace Troiamis.Controllers
             return View();
         }
 
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -72,11 +70,6 @@ namespace Troiamis.Controllers
             {
                 return RedirectToAction("Login");
             }
-        }
-
-        public IActionResult Login()
-        {
-            return View();
         }
 
         public IActionResult Profile()
