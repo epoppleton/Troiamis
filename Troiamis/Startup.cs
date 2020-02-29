@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Troiamis.ModelsCombined;
-//test
+
 namespace Troiamis
 {
     public class Startup
@@ -19,8 +19,6 @@ namespace Troiamis
             Configuration = configuration;
         }
 
-        //INIT for a new branch
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,37 +26,36 @@ namespace Troiamis
         {
             services.AddDbContext<TroiamisDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.AddControllersWithViews();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddSession();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
             app.UseSession();
-
             app.UseStaticFiles();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "Home",
+                    template: "{controller=Home}/{action=Index}");
+
+                routes.MapRoute(
+                    name: "Login",
+                    template: "Login",
+                    defaults: new { Controller = "Home", action = "Login" });
+
+                //Template for additional routing
+                //routes.MapRoute(
+                //    name: "", name for it
+                //    template: "{}", what you want in the search bar
+                //    defaults: new { Controller =  }); controller, action
+
             });
         }
     }
 }
-
-//Hunter wuz here
