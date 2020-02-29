@@ -33,6 +33,11 @@ namespace Troiamis.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         public IActionResult NewPost()
         {
             return View();
@@ -73,7 +78,6 @@ namespace Troiamis.Controllers
         {
             return View();
         }
-
 
         public IActionResult Profile()
         {

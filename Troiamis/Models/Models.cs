@@ -28,11 +28,16 @@ namespace Troiamis.ModelsCombined
 
     public class Post
     {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "filename cannot be empty")]
         public string fileName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "postName cannot be empty")]
         public string posterName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "post must have a title")]
         public string postTitle { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "post must have conntent")]
         public string postContent { get; set; }
         public DateTime timeStamp { get; set; }
+        [Key]
         public long postID { get; set; }
         public int ratings { get; set; }
     }
@@ -52,7 +57,7 @@ namespace Troiamis.ModelsCombined
         [Key]
         [StringLength(64, ErrorMessage = "user name must be within the valid character count (6 - 64)", MinimumLength = 6)]
         public string userName { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Password cannot be empty")]
+        [Required (AllowEmptyStrings = false, ErrorMessage = "Password cannot be empty")]
         public string password { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email cannot be empty")]
         public string userEmail { get; set; }
