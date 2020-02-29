@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Troiamis.ModelsCombined;
-//test
+
 namespace Troiamis
 {
     public class Startup
@@ -19,8 +19,6 @@ namespace Troiamis
             Configuration = configuration;
         }
 
-        //INIT for a new branch
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,7 +27,7 @@ namespace Troiamis
             services.AddDbContext<TroiamisDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.AddControllersWithViews();
             services.AddMvc(option => option.EnableEndpointRouting = false);
-
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +35,7 @@ namespace Troiamis
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
+            app.UseSession();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

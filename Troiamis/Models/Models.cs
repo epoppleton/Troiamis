@@ -16,6 +16,7 @@ namespace Troiamis.ModelsCombined
 
         public DbSet<Post> Posts { get; set; }
         //public DbSet<ImagePost> ImagePosts { get; set; }
+        //public DbSet<PostsGallery> PostsGalleries { get; set; }
         public DbSet<User> Users { get; set; }
     }
 
