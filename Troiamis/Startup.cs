@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Troiamis.ModelsCombined;
 //test
 namespace Troiamis
 {
@@ -24,6 +26,7 @@ namespace Troiamis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TroiamisDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.AddControllersWithViews();
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
@@ -47,10 +50,11 @@ namespace Troiamis
                     template: "Login",
                     defaults: new { Controller = "Home", action = "Login" });
 
+                //Template for additional routing
                 //routes.MapRoute(
-                //    name: "",
-                //    template: "{}",
-                //    defaults: new { Controller =  });
+                //    name: "", name for it
+                //    template: "{}", what you want in the search bar
+                //    defaults: new { Controller =  }); controller, action
 
             });
         }

@@ -29,9 +29,9 @@ namespace Troiamis.Controllers
 
         public IActionResult Index()
         {
-            Post P = new Post { fileName = "Test", posterName = "Test", postTitle = "Test", postContent = "This is a test", timeStamp = DateTime.Now, postID = 1, ratings = 1 };
-            DB.Posts.Add(P);
-            DB.SaveChanges();
+            //Post P = new Post { fileName = "Test", posterName = "Test", postTitle = "Test", postContent = "This is a test", timeStamp = DateTime.Now, postID = 1, ratings = 1 };
+            //DB.Posts.Add(P);
+            //DB.SaveChanges();
 
             return View();
         }
