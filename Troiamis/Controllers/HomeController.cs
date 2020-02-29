@@ -62,17 +62,16 @@ namespace Troiamis.Controllers
             ModelsCombined.User user = DB.Users.Where(u => u.userName == Request.Form["userName"] && u.password == Request.Form["password"]).FirstOrDefault();
             Debug.WriteLine(Request.Form["userName"].ToString());
             Debug.WriteLine(Request.Form["password"].ToString());
-            HttpContext.Session.SetString("username", Request.Form["userName"].ToString());
+
             if (user != null)
             {
-                
+                HttpContext.Session.SetString("username", Request.Form["userName"].ToString());
+                return RedirectToAction("Index");
             }
             else
             {
-                RedirectToAction("Login");
+                return RedirectToAction("Login");
             }
-            
-            return View();
         }
 
         public IActionResult Profile()
