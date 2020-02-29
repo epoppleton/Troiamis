@@ -51,21 +51,16 @@ namespace Troiamis.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult CheckUser()
+        public IActionResult Login(ModelsCombined.User compare)
         {
-            ModelsCombined.User user = DB.Users.Where(u => u.userName == Request.Form["userName"] && u.password == Request.Form["password"]).FirstOrDefault();
-            Debug.WriteLine(Request.Form["userName"].ToString());
-            Debug.WriteLine(Request.Form["password"].ToString());
-            
+            ModelsCombined.User user = DB.Users.Where(u => u.userName == compare.userName && u.password == compare.password).FirstOrDefault();
+            Debug.WriteLine(user.userName.ToString());
+            Debug.WriteLine(user.password.ToString());
+
             if (user != null)
             {
-                HttpContext.Session.SetString("username", Request.Form["userName"].ToString());
+                HttpContext.Session.SetString("username", user.userName.ToString());
                 return RedirectToAction("Index");
             }
             else
@@ -73,6 +68,12 @@ namespace Troiamis.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
 
         public IActionResult Profile()
         {

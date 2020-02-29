@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -48,9 +49,14 @@ namespace Troiamis.ModelsCombined
 
     public class User
     {
+        [Key]
+        [StringLength(64, ErrorMessage = "user name must be within the valid character count (6 - 64)", MinimumLength = 6)]
         public string userName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Password cannot be empty")]
         public string password { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Email cannot be empty")]
         public string userEmail { get; set; }
+        [Range(13, int.MaxValue, ErrorMessage = "You must be at least 13 years old")]
         public int age { get; set; }
         public string avatarImageString { get; set; }
     }
