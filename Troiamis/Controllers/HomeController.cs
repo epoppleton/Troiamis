@@ -72,9 +72,19 @@ namespace Troiamis.Controllers
             }
         }
 
-        public IActionResult Profile()
+        public IActionResult Profile(string profileName)
         {
-            return View();
+            ModelsCombined.User user = DB.Users.Where(u => u.userName == profileName).FirstOrDefault();
+
+            IEnumerable<Post> userPosts = DB.Posts.Where(u => u.posterName == profileName);
+
+            Post post = new Post();
+
+            post.posterName = "Admin";
+
+            userPosts.Append(post);
+
+            return View(userPosts);
         }
     }
 }
