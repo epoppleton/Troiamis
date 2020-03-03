@@ -40,6 +40,8 @@ namespace Troiamis.Controllers
 
         public IActionResult NewPost()
         {
+            //if (HttpContext.Session.GetString("username", compare.userName.ToString());)
+
             return View();
         }
 
@@ -82,9 +84,13 @@ namespace Troiamis.Controllers
             }
         }
 
-        public IActionResult Profile()
+        public IActionResult Profile(string profileName)
         {
-            return View();
+            ModelsCombined.User user = DB.Users.Where(u => u.userName == profileName).FirstOrDefault();
+
+            IEnumerable<Post> userPosts = DB.Posts.Where(u => u.posterName == profileName);
+
+            return View(userPosts);
         }
     }
 }
