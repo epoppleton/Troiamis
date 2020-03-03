@@ -48,6 +48,11 @@ namespace Troiamis.Controllers
             return View();
         }
 
+        public IActionResult Gallery()
+        {
+            return View(DB.Posts.Select(p => p));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
