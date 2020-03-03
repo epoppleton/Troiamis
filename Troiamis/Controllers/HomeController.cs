@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Troiamis.Models;
 using Troiamis.ModelsCombined;
 
 namespace Troiamis.Controllers
@@ -30,7 +29,39 @@ namespace Troiamis.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("username") == "" || HttpContext.Session.GetString("username") == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("HomePage");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Index(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.avatarImageString = "";
+                User isExisting = DB.Users.Select(u => u).Where(u => u.userName == user.userName).FirstOrDefault();
+                if (isExisting != null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    DB.Users.Add(user);
+                    DB.SaveChanges();
+                    HttpContext.Session.SetString("username", user.userName.ToString());
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult Login()
@@ -58,11 +89,11 @@ namespace Troiamis.Controllers
             return View(DB.Posts.Select(p => p));
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
 
         [HttpPost]
         public IActionResult Login(ModelsCombined.User compare)

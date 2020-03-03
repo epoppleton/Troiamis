@@ -1,5 +1,6 @@
 @using Troiamis
-@using Troiamis.Models
+@using Troiamis.ModelsCombined;
+@model User
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,27 +10,33 @@
 </div>
 <div id="createProfileContainer">
 
-    <form style="width: 45%;">
+    <form style="width: 45%;" method="post">
         <div class="form-group">
-            <label @*asp-for="userEmail"*@>Email address</label>
-            <input @*asp-for="userEmail"*@ type="email" class="form-control" id="" aria-describedby="emailHelp">
+            <label asp-for=userEmail>Email address</label>
+            <input asp-for=userEmail type="email" class="form-control" id="" aria-describedby="emailHelp">
+            <span asp-validation-for="userEmail"></span>
             <small id="" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
+
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label @*asp-for="userName"*@>User Name</label>
-                <input @*asp-for="userName"*@ type="text" class="form-control" id="inputUserName">
+                <label asp-for="userName">User Name</label>
+                <input asp-for="userName" type="text" class="form-control" id="inputUserName">
+                <span asp-validation-for="userName"></span>
             </div>
             <div class="form-group col-md-6">
-                <label @*asp-for="Age"*@>Age</label>
-                <input @*asp-for="Age"*@ type="number" class="form-control" id="inputAge">
+                <label asp-for="age">Age</label>
+                <input asp-for="age" type="number" class="form-control" id="inputAge">
+                <span asp-validation-for="age"></span>
             </div>
         </div>
+
         <div class="form-group">
-            <label @*asp-for="password"*@>Password</label>
-            <input @*asp-for="password"*@ type="password" class="form-control" id="inputPassword">
+            <label asp-for="password">Password</label>
+            <input asp-for="password" type="password" class="form-control" id="inputPassword">
+            <span asp-validation-for="password"></span>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <br />
-        <a asp-controller="Home" asp-action="Login">Login</a>
+        <a asp-controller="Home" asp-action="Index">Login</a>
     </form>
