@@ -65,24 +65,36 @@
         <h1>
             Posts
         </h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Poster</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>PostID</th>
+                    <th>Ratings</th>
+                    <th>Time Stamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Post e in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Home"
+                               asp-action="Profile"
+                               asp-route-profileName="@e.posterName">@e.posterName</a>
+                        </td>
+                        <td>@e.postTitle</td>
+                        <td>@e.postContent</td>
+                        <td>@e.postID</td>
+                        <td>@e.ratings</td>
+                        <td>@e.timeStamp</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
 </div>
-<tbody>
-    @foreach (Post e in Model)
-    {
-        <tr>
-            <td>
-                <a asp-controller="Home"
-                   asp-action="Profile"
-                   asp-route-profileName="@e.posterName">@e.posterName</a>
-            </td>
-            <td>@e.postTitle</td>
-            <td>@e.postContent</td>
-            <td>@e.postID</td>
-            <td>@e.ratings</td>
-            <td>@e.timeStamp</td>
-        </tr>
-    }
-</tbody>
 
