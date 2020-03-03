@@ -50,8 +50,12 @@ namespace Troiamis.Controllers
 
         public IActionResult ViewPost(ModelsCombined.Post P)
         {
-            P = DB.Posts.Where(n => n.postID == 1).FirstOrDefault();
             return View(P);
+        }
+
+        public IActionResult Gallery()
+        {
+            return View(DB.Posts.Select(p => p));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,0 +1,33 @@
+﻿@using Troiamis.ModelsCombined;
+
+@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<h1>Gallery</h1>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Post Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Post p in Model)
+            {
+                string date = p.timeStamp.Month + "/" + p.timeStamp.Day + "/" + p.timeStamp.Year + ", " + p.timeStamp.Hour + ":" + p.timeStamp.Minute;
+
+                <tr>
+                    <td><a asp-action="ViewPost" asp-route-P="@p">@p.postTitle</a></td>
+                    <td><a asp-action="Profile" asp-route-profileName="@p.posterName">@p.posterName</a></td>
+                    <td>@date</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
