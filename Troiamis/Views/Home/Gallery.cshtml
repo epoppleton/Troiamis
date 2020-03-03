@@ -21,7 +21,7 @@
                 string date = p.timeStamp.Month + "/" + p.timeStamp.Day + "/" + p.timeStamp.Year + ", " + p.timeStamp.Hour + ":" + p.timeStamp.Minute;
 
                 <tr>
-                    <td><a asp-action="ViewPost" asp-route-P="@p">@p.postTitle</a></td>
+                    <td><a asp-action="ViewPost" asp-route-id="@p.postID">@p.postTitle</a></td>
                     <td><a asp-action="Profile" asp-route-profileName="@p.posterName">@p.posterName</a></td>
                     <td>@date</td>
                 </tr>

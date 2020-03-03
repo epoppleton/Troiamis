@@ -48,9 +48,9 @@ namespace Troiamis.Controllers
             return View();
         }
 
-        public IActionResult ViewPost(ModelsCombined.Post P)
+        public IActionResult ViewPost(long id)
         {
-            return View(P);
+            return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
         }
 
         public IActionResult Gallery()
