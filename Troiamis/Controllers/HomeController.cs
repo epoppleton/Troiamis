@@ -50,8 +50,13 @@ namespace Troiamis.Controllers
 
         public IActionResult ViewPost(ModelsCombined.Post P)
         {
-            P = DB.Posts.Where(n => n.postID == 1).FirstOrDefault();
             return View(P);
+        }
+
+        public IActionResult HomePage()
+        {
+            List<Post> recent = DB.Posts.OrderBy(p => p.timeStamp).Take(10).ToList();
+            return View(recent);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
