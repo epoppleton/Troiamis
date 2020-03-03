@@ -1,0 +1,27 @@
+﻿@using Troiamis.ModelsCombined
+
+@model Post
+@{
+    ViewData["Title"] = "ViewPost";
+}
+
+<!DCOTYPE html>
+<html>
+
+<head>
+    Poster: @Model.posterName
+    <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+</head>
+
+<body>
+    <div>
+        Title: @Model.postTitle
+    </div>
+
+
+    <div>
+        @Model.postContent
+    </div>
+</body>
+
+</html>

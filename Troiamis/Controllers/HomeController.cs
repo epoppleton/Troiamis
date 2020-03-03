@@ -48,6 +48,11 @@ namespace Troiamis.Controllers
             return View();
         }
 
+        public IActionResult ViewPost(ModelsCombined.Post P)
+        {
+            return View(P);
+        }
+
         public IActionResult Gallery()
         {
             return View(DB.Posts.Select(p => p));
