@@ -48,6 +48,12 @@ namespace Troiamis.Controllers
             return View();
         }
 
+        public IActionResult ViewPost(ModelsCombined.Post P)
+        {
+            P = DB.Posts.Where(n => n.postID == 1).FirstOrDefault();
+            return View(P);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
