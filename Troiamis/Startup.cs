@@ -55,6 +55,12 @@ namespace Troiamis
                 //    template: "Profile/{profileName?}", what you want in the search bar
                 //    defaults: new { Controller = "Home", action = "Profile" }); controller, action
 
+                //Template for additional routing
+                //routes.MapRoute(
+                //    name: "", name for it
+                //    template: "Profile",
+                //    defaults: new { Controller = "Home", action = "Profile" });
+
             });
         }
     }
