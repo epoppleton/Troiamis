@@ -71,34 +71,43 @@ namespace Troiamis.Controllers
 
         public IActionResult NewPost()
         {
-            ModelsCombined.User user = DB.Users.Where(u => u.userName == compare.userName && u.password == compare.password).FirstOrDefault();
-
-            if (user == null || HttpContext.Session.GetString(user.userName) == null)
+            string user = HttpContext.Session.GetString("username");
+            if (user != null)
             {
-                return RedirectToAction("Login");
+                if (user == DB.Users.Where(u => u.userName == user).FirstOrDefault().userName)
+                {
+                    return View();
+                }            
             }
-            else
-            {
+
+            return RedirectToAction("Login");
+
+            //if (user == null || HttpContext.Session.GetString(user.userName) == null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
+            //else
+            //{
                 
-            }
+            //}
 
-            return View();
+            //return View();
         }
 
         [HttpPost]
         public IActionResult NewPost(ModelsCombined.Post outgoingPost)
         {
-            outgoingPost.fileName = "";
+            outgoingPost.fileName = "NULL";
             outgoingPost.posterName = HttpContext.Session.GetString("username");
             outgoingPost.timeStamp = DateTime.Now;
             outgoingPost.postID = DB.Posts.Count() + 1;
             outgoingPost.ratings = 1;
-            if (ModelState.IsValid)
+            if (outgoingPost.postTitle != null && outgoingPost.postContent != null)
             {
                 DB.Posts.Add(outgoingPost);
                 DB.SaveChanges();
 
-                return RedirectToAction("ViewPost", outgoingPost.postID);
+                return RedirectToAction("ViewPost", new { id = outgoingPost.postID });
             }
             else
             {
@@ -113,19 +122,13 @@ namespace Troiamis.Controllers
 
         public IActionResult ViewPost(long id)
         {
-            return View(P);
+            return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
         }
 
         public IActionResult HomePage()
         {
             List<Post> recent = DB.Posts.OrderBy(p => p.timeStamp).Take(10).ToList();
             return View(recent);
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error(Post.postID id)
-        {
-            return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
         }
 
         public IActionResult Gallery()
