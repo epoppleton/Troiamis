@@ -29,12 +29,14 @@ namespace Troiamis.Controllers
 
         public IActionResult Index()
         {
+
             if (HttpContext.Session.GetString("username") == "" || HttpContext.Session.GetString("username") == null)
             {
                 return View();
             }
             else
             {
+
                 return RedirectToAction("HomePage");
             }
         }
