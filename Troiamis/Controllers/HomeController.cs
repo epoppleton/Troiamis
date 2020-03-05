@@ -69,7 +69,7 @@ namespace Troiamis.Controllers
             return View();
         }
 
-        public IActionResult NewPost(ModelsCombined.User compare)
+        public IActionResult NewPost()
         {
             ModelsCombined.User user = DB.Users.Where(u => u.userName == compare.userName && u.password == compare.password).FirstOrDefault();
 
@@ -112,6 +112,18 @@ namespace Troiamis.Controllers
         }
 
         public IActionResult ViewPost(long id)
+        {
+            return View(P);
+        }
+
+        public IActionResult HomePage()
+        {
+            List<Post> recent = DB.Posts.OrderBy(p => p.timeStamp).Take(10).ToList();
+            return View(recent);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error(Post.postID id)
         {
             return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
         }
