@@ -69,11 +69,41 @@ namespace Troiamis.Controllers
             return View();
         }
 
-        public IActionResult NewPost()
+        public IActionResult NewPost(ModelsCombined.User compare)
         {
-            //if (HttpContext.Session.GetString("username", compare.userName.ToString());)
+            ModelsCombined.User user = DB.Users.Where(u => u.userName == compare.userName && u.password == compare.password).FirstOrDefault();
+
+            if (HttpContext.Session.GetString(user.userName) == null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                
+            }
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewPost(ModelsCombined.Post outgoingPost)
+        {
+            outgoingPost.fileName = "";
+            outgoingPost.posterName = HttpContext.Session.GetString("username");
+            outgoingPost.timeStamp = DateTime.Now;
+            outgoingPost.postID = DB.Posts.Count() + 1;
+            outgoingPost.ratings = 1;
+            if (ModelState.IsValid)
+            {
+                DB.Posts.Add(outgoingPost);
+                DB.SaveChanges();
+
+                return RedirectToAction("ViewPost", outgoingPost.postID);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()
