@@ -122,7 +122,11 @@ namespace Troiamis.Controllers
 
         public IActionResult ViewPost(long id)
         {
-            return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
+
+            ViewData["Post"] = DB.Posts.Where(p => p.postID == id).FirstOrDefault();
+            ViewData["Comments"] = DB.Comments.Where(c => c.postID == id).ToList();
+
+            return View();
         }
 
         public IActionResult HomePage()
