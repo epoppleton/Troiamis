@@ -164,6 +164,9 @@ namespace Troiamis.Controllers
 
             IEnumerable<Post> userPosts = DB.Posts.Where(u => u.posterName == profileName);
 
+            ViewData["User"] = DB.Users.Where(u => u.userName == profileName).FirstOrDefault();
+            ViewData["Posts"] = DB.Posts.Where(u => u.posterName == profileName);
+
             return View(userPosts);
         }
     }
