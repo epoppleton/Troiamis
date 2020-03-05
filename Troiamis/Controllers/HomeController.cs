@@ -73,7 +73,7 @@ namespace Troiamis.Controllers
         {
             ModelsCombined.User user = DB.Users.Where(u => u.userName == compare.userName && u.password == compare.password).FirstOrDefault();
 
-            if (HttpContext.Session.GetString(user.userName) == null)
+            if (HttpContext.Session.GetString(user.userName) == null || user == null)
             {
                 return RedirectToAction("Login");
             }
