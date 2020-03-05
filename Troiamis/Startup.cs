@@ -44,10 +44,16 @@ namespace Troiamis
                     name: "Home",
                     template: "{controller=Home}/{action=Index}");
 
-                routes.MapRoute(
-                    name: "Login",
-                    template: "Login",
-                    defaults: new { Controller = "Home", action = "Login" });
+            routes.MapRoute(
+                name: "Login",
+                template: "Login",
+                defaults: new { Controller = "Home", action = "Login" });
+
+
+                 routes.MapRoute(
+                    name: "Profile",
+                    template: "Profile/{profileName}",
+                    defaults: new { Controller = "Home", action = "Profile" });
 
                 //Template for additional routing
                 //routes.MapRoute(
