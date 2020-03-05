@@ -113,6 +113,17 @@ namespace Troiamis.Controllers
 
         public IActionResult ViewPost(long id)
         {
+            return View(P);
+        }
+
+        public IActionResult HomePage()
+        {
+            List<Post> recent = DB.Posts.OrderBy(p => p.timeStamp).Take(10).ToList();
+            return View(recent);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
             return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
         }
 
