@@ -172,5 +172,11 @@ namespace Troiamis.Controllers
 
             return View(userPosts);
         }
+
+        [HttpPost]
+        public IActionResult Comment()
+        {
+            
+        }
     }
 }
