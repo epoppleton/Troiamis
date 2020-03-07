@@ -177,9 +177,24 @@ namespace Troiamis.Controllers
         }
 
         [HttpPost]
-        public IActionResult Comment()
+        public IActionResult Comment(Comment comment, long postid)
         {
-            
+            string user = HttpContext.Session.GetString("username");
+            if (user == null)
+            {
+                return RedirectToAction("ViewPost", new { id = postid });
+            }
+            else
+            {
+                comment.postID = (int)postid;
+                comment.userName = HttpContext.Session.GetString("username");
+                comment.commentID = DB.Comments.Count() + 1;
+
+                DB.Comments.Add(comment);
+                DB.SaveChanges();
+
+                return RedirectToAction("ViewPost", new { id = postid });
+            }
         }
     }
 }
