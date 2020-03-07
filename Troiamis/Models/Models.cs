@@ -18,6 +18,7 @@ namespace Troiamis.ModelsCombined
         //public DbSet<ImagePost> ImagePosts { get; set; }
         //public DbSet<PostsGallery> PostsGalleries { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 
 
@@ -65,4 +66,18 @@ namespace Troiamis.ModelsCombined
         public int age { get; set; }
         public string avatarImageString { get; set; }
     }
+
+    public class Comment
+    { 
+        [Key]
+        public int commentID { get; set; }
+        [StringLength(250, ErrorMessage = "user name must be below the valid character count (250)")]
+        public string commentContent { get; set; }
+
+        public string userName { get; set; }
+
+        public int postID { get; set; }
+    }
+
+
 }

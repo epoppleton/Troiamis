@@ -1,26 +1,55 @@
 ﻿@using Troiamis.ModelsCombined
 
-@model Post
 @{
-    ViewData["Title"] = "ViewPost";
+    Post post = ViewData["Post"] as Post;
+    IEnumerable<Comment> comments = ViewData["Comments"] as IEnumerable<Comment>;
 }
 
 <!DCOTYPE html>
 <html>
 
 <head>
-    Poster: @Model.posterName
-    <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+    Poster: @post.posterName
+    <a asp-action="Profile" asp-route-profileName="@post.posterName"> @post.posterName's Page  </a>
 </head>
 
 <body>
     <div>
-        Title: @Model.postTitle
+        Title: @post.postTitle
     </div>
 
 
     <div>
-        @Model.postContent
+        @post.postContent
+    </div>
+
+
+    <div>
+        <br><br>
+        <h5>Comments</h5>
+        <table>
+            @if (comments == null)
+            {
+
+            }
+            else
+            {
+                @foreach (Comment C in comments)
+                {
+                    <tr>
+                        <td>@C.userName</td>
+                        <td>@C.commentContent</td>
+                    </tr>
+                }
+            }
+
+        </table>
+
+        <br><br>
+        <form method="post">
+
+        </form>
+
     </div>
 </body>
 

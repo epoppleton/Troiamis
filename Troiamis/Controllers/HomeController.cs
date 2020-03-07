@@ -29,12 +29,14 @@ namespace Troiamis.Controllers
 
         public IActionResult Index()
         {
+
             if (HttpContext.Session.GetString("username") == "" || HttpContext.Session.GetString("username") == null)
             {
                 return View();
             }
             else
             {
+
                 return RedirectToAction("HomePage");
             }
         }
@@ -122,7 +124,11 @@ namespace Troiamis.Controllers
 
         public IActionResult ViewPost(long id)
         {
-            return View(DB.Posts.Where(p => p.postID == id).FirstOrDefault());
+
+            ViewData["Post"] = DB.Posts.Where(p => p.postID == id).FirstOrDefault();
+            ViewData["Comments"] = DB.Comments.Where(c => c.postID == id).ToList();
+
+            return View();
         }
 
         public IActionResult HomePage()
@@ -165,6 +171,12 @@ namespace Troiamis.Controllers
             IEnumerable<Post> userPosts = DB.Posts.Where(u => u.posterName == profileName);
 
             return View(userPosts);
+        }
+
+        [HttpPost]
+        public IActionResult Comment()
+        {
+            
         }
     }
 }
