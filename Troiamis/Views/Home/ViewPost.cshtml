@@ -5,23 +5,37 @@
     ViewData["Title"] = "ViewPost";
 }
 
-<!DCOTYPE html>
-<html>
+@*<!DCOTYPE html>
+    <html>
 
-<head>
-    Poster: @Model.posterName
-    <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
-</head>
+    <head>
+        Poster: @Model.posterName
+        <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+    </head>
 
-<body>
-    <div>
-        Title: @Model.postTitle
+    <body>
+        <div>
+            Title: @Model.postTitle
+        </div>
+
+
+        <div>
+            @Model.postContent
+        </div>
+    </body>
+
+    </html>*@
+
+<div>
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header">Poster: @Model.posterName </div>
+            <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+            <div class="card-title">
+                Title: @Model.postTitle
+            </div>
+            <div class="card-body">
+                @Model.postContent
+            </div>
+
     </div>
-
-
-    <div>
-        @Model.postContent
-    </div>
-</body>
-
-</html>
+</div>
