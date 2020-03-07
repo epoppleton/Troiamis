@@ -29,13 +29,13 @@
 
 <div>
     <div class="card text-white bg-dark mb-3">
-        <div class="card-header">Poster: @Model.posterName </div>
-            <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+        <div class="card-header">Poster: @post.posterName </div>
+            <a asp-action="Profile" asp-route-profileName="@post.posterName"> @post.posterName's Page  </a>
             <div class="card-title">
-                Title: @Model.postTitle
+                Title: @post.postTitle
             </div>
             <div class="card-body">
-                @Model.postContent
+                @post.postContent
             </div>
 
        <div>
@@ -62,7 +62,7 @@
         <br><br>
             <form method="post">
                 <p>
-                    <label asp-for="commentContent">Content:</label>
+                    <label asp-for="commentContent">Comment:</label>
                     <input asp-for="commentContent" />
                     <span asp-validation-for="commentContent"></span>
                 </p>
