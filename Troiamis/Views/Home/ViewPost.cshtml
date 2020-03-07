@@ -1,4 +1,4 @@
-﻿@using Troiamis.ModelsCombined
+@using Troiamis.ModelsCombined
 @model Comment  
 
 @{
@@ -6,26 +6,39 @@
     IEnumerable<Comment> comments = ViewData["Comments"] as IEnumerable<Comment>;
 }
 
-<!DCOTYPE html>
-<html>
+@*<!DCOTYPE html>
+    <html>
 
-<head>
-    Poster: @post.posterName
-    <a asp-action="Profile" asp-route-profileName="@post.posterName"> @post.posterName's Page  </a>
-</head>
+    <head>
+        Poster: @Model.posterName
+        <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+    </head>
 
-<body>
-    <div>
-        Title: @post.postTitle
-    </div>
-
-
-    <div>
-        @post.postContent
-    </div>
+    <body>
+        <div>
+            Title: @Model.postTitle
+        </div>
 
 
-    <div>
+        <div>
+            @Model.postContent
+        </div>
+    </body>
+
+    </html>*@
+
+<div>
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header">Poster: @Model.posterName </div>
+            <a asp-action="Profile" asp-route-profileName="@Model.posterName"> @Model.posterName's Page  </a>
+            <div class="card-title">
+                Title: @Model.postTitle
+            </div>
+            <div class="card-body">
+                @Model.postContent
+            </div>
+
+       <div>
         <br><br>
         <h5>Comments</h5>
         <table>
@@ -57,6 +70,7 @@
             </form>
 
     </div>
-</body>
-
-</html>
+    </div>
+</div>
+      
+      

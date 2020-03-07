@@ -6,7 +6,8 @@
 }
 
 <h1>Gallery</h1>
-<div>
+<br />
+@*<div>
     <table>
         <thead>
             <tr>
@@ -28,4 +29,20 @@
             }
         </tbody>
     </table>
+</div>*@
+
+<div style="position: relative; height: auto; overflow-y: scroll">
+    @foreach (Post p in Model)
+    {
+        string date = p.timeStamp.Month + "/" + p.timeStamp.Day + "/" + p.timeStamp.Year + ", " + p.timeStamp.Hour + ":" + p.timeStamp.Minute;
+
+        <div class="card">
+            <h3><a asp-action="ViewPost" asp-route-id="@p.postID">@p.postTitle</a></h3>
+            <p><a asp-action="Profile" asp-route-profileName="@p.posterName">@p.posterName</a></p>
+            <p>@date</p>
+            <div class="card-body">@p.postContent</div>
+        </div>
+
+
+    }
 </div>

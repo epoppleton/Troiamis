@@ -5,31 +5,21 @@
     ViewData["Title"] = "NewPost";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
 
-</head>
-<body>
-    <div class="text-center">
-        <h1 class="display-4">Make A New Post</h1>
-    </div>
-    <div>
-        <form method="post">
-            <p>
-                <label asp-for="postTitle">Title:</label>
-                <input asp-for="postTitle" />
-                <span asp-validation-for="postTitle"></span>
-            </p>
-            <p>
-                <label asp-for="postContent">Content:</label>
-                <input asp-for="postContent" />
-                <span asp-validation-for="postContent"></span>
-            </p>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+<form method="post" style="width: 45%;">
 
+    <div class="form-group col-md-6">
+        <label asp-for="postTitle" for="titleID">Title:</label>
+        <input asp-for="postTitle" type="text" id="titleID" />
+        <span asp-validation-for="postTitle"></span>
     </div>
-</body>
-</html>
+
+    <div class="form-group col-md-6">
+        <label asp-for="postContent" for="contentID">Content:</label>
+        <input asp-for="postContent" type="text" id="contentID" />
+        <span asp-validation-for="postContent"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 

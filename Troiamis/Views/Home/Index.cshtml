@@ -6,13 +6,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">WELCOME</h1>
 </div>
 <div id="createProfileContainer">
 
     <form style="width: 45%;" method="post">
         <div class="form-group">
-            <label asp-for=userEmail>Email address</label>
+            <label asp-for=userEmail>Email Address</label>
             <input asp-for=userEmail type="email" class="form-control" id="" aria-describedby="emailHelp">
             <span asp-validation-for="userEmail"></span>
             <small id="" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -40,3 +40,4 @@
         <br />
         <a asp-controller="Home" asp-action="Index">Login</a>
     </form>
+</div>
