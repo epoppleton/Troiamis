@@ -1,8 +1,9 @@
-﻿@using Troiamis.ModelsCombined
+@using Troiamis.ModelsCombined
+@model Comment  
 
-@model Post
 @{
-    ViewData["Title"] = "ViewPost";
+    Post post = ViewData["Post"] as Post;
+    IEnumerable<Comment> comments = ViewData["Comments"] as IEnumerable<Comment>;
 }
 
 @*<!DCOTYPE html>
@@ -37,5 +38,39 @@
                 @Model.postContent
             </div>
 
+       <div>
+        <br><br>
+        <h5>Comments</h5>
+        <table>
+            @if (comments == null)
+            {
+
+            }
+            else
+            {
+                @foreach (Comment C in comments)
+                {
+            <tr>
+                <td><a asp-action="Profile" asp-route-profileName="@C.userName"><strong>@C.userName: </strong></a></td>
+                <td>@C.commentContent <br></td>
+            </tr>
+                }
+            }
+
+        </table>
+
+        <br><br>
+            <form method="post">
+                <p>
+                    <label asp-for="commentContent">Content:</label>
+                    <input asp-for="commentContent" />
+                    <span asp-validation-for="commentContent"></span>
+                </p>
+                <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="Comment" asp-route-postid="@post.postID">Submit</button>
+            </form>
+
+    </div>
     </div>
 </div>
+      
+      
