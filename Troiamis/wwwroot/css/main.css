@@ -8,7 +8,7 @@
 
 body {
     height: auto;
-    font-family: 'Arapey',;
+    font-family: 'Arapey', serif;
     padding: 10px;
     margin: 10px;
 }
@@ -33,3 +33,4 @@ footer {
     justify-content: center;
     display: flex;
 }
+
