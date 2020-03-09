@@ -9,7 +9,7 @@
     IEnumerable<Post> posts = ViewData["Posts"] as IEnumerable<Post>;
 }
 
-<h1>Profile</h1>
+<h1>Hello @user.userName !</h1>
 
 <div id="profileImage-container" class="p-2">
     <div class="text-center">
@@ -24,24 +24,36 @@
     <h1>
         Posts
     </h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Time Stamp</th>
-            </tr>
-        </thead>
-        <tbody data-spy="scroll">
-            @foreach (Post e in posts)
-            {
+    @*<table>
+            <thead>
                 <tr>
-                    <td>@e.postTitle</td>
-                    <td>@e.postContent</td>
-                    <td>@e.timeStamp</td>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Time Stamp</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody data-spy="scroll">
+                @foreach (Post e in posts)
+                {
+                    <tr>
+                        <td>@e.postTitle</td>
+                        <td>@e.postContent</td>
+                        <td>@e.timeStamp</td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+    @foreach (Post e in posts)
+    {
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">@user.userName</div>
+            <div class="card-body">
+                <h5 class="card-title">@e.postTitle</h5>
+                <p class="card-text">@e.postContent</p>
+                <div class="card-footer border-success">@e.timeStamp</div>
+            </div>
+        </div>
+
+    }
 </div>
 
