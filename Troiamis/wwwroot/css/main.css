@@ -8,18 +8,23 @@
 
 body {
     height: auto;
+    font-family: 'Arapey', serif;
     padding: 10px;
-    font-family: 'Arapey',;
     margin: 10px;
 }
 
 footer {
     background-color: black;
     color: white;
+    padding: 10px;
+    margin: -20px;
+    position: absolute;
+    display: block;
 }
 
 #profileImage {
-    width: 50%;
+    width: 10%;
+    height: auto;
     padding: 2px;
 }
 
@@ -28,9 +33,4 @@ footer {
     justify-content: center;
     display: flex;
 }
-
-footer{
-    width: 100%;
-}
-
 

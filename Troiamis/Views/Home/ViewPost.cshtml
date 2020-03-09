@@ -61,11 +61,11 @@
 
         <br><br>
             <form method="post">
-                <p>
+                <div class="form-group">
                     <label asp-for="commentContent">Comment:</label>
-                    <input asp-for="commentContent" />
+                    <input asp-for="commentContent" class="form-control"/>
                     <span asp-validation-for="commentContent"></span>
-                </p>
+                </div>
                 <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="Comment" asp-route-postid="@post.postID">Submit</button>
             </form>
 

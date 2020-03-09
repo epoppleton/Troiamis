@@ -4,7 +4,7 @@
     ViewData["Title"] = "HomePage";
 }
 
-<h1>HomePage</h1>
+<h1>WELCOME!</h1>
 
 @*<div>
         <table>
@@ -39,7 +39,7 @@
         {
             string date = p.timeStamp.Month + "/" + p.timeStamp.Day + "/" + p.timeStamp.Year + ", " + p.timeStamp.Hour + ":" + p.timeStamp.Minute;
 
-            <div class="card">
+            <div class="card" style="padding: 15px; margin: 10px">
                 <h3><a asp-action="ViewPost" asp-route-id="@p.postID">@p.postTitle</a></h3>
                 <p><a asp-action="Profile" asp-route-profileName="@p.posterName">@p.posterName</a></p>
                 <p>@date</p>
