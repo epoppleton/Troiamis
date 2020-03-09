@@ -6,20 +6,19 @@
 }
 
 
-<form method="post" style="width: 45%;">
+<form method="post">
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <label asp-for="postTitle" for="titleID">Title:</label>
-        <input asp-for="postTitle" type="text" id="titleID" />
+        <input asp-for="postTitle" type="text" id="titleID" class="form-control" />
         <span asp-validation-for="postTitle"></span>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
         <label asp-for="postContent" for="contentID">Content:</label>
-        <input asp-for="postContent" type="text" id="contentID" />
+        <input asp-for="postContent" type="text" id="contentID" class="form-control" />
         <span asp-validation-for="postContent"></span>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
 
