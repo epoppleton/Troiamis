@@ -133,7 +133,7 @@ namespace Troiamis.Controllers
 
         public IActionResult HomePage()
         {
-            List<Post> recent = DB.Posts.OrderBy(p => p.timeStamp).Take(10).ToList();
+            List<Post> recent = DB.Posts.OrderByDescending(p => p.timeStamp).Take(10).ToList();
             return View(recent);
         }
 
