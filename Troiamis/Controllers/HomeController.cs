@@ -139,7 +139,7 @@ namespace Troiamis.Controllers
 
         public IActionResult Gallery()
         {
-            return View(DB.Posts.Select(p => p));
+            return View(DB.Posts.OrderByDescending(p => p.timeStamp).Select(p => p));
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
