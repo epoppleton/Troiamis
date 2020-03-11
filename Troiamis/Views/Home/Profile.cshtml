@@ -43,17 +43,32 @@
                 }
             </tbody>
         </table>*@
-    @foreach (Post e in posts)
-    {
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">@user.userName</div>
-            <div class="card-body">
-                <h5 class="card-title">@e.postTitle</h5>
-                <p class="card-text">@e.postContent</p>
-                <div class="card-footer border-success">@e.timeStamp</div>
-            </div>
-        </div>
-
+    @{
+        int count = 0;
     }
+    <div class="row justify-content-center">
+        @foreach (Post e in posts)
+        {
+
+            { count++; }
+
+
+            @if (count == 4)
+            {
+                <div class="w-100"></div>
+                count = 0;
+            }
+            <div class="card text-white bg-dark mb-3 col col-lg-12" style="max-width: 25rem; margin: 10px;">
+                <div class="card-header">@user.userName</div>
+                <div class="card-body">
+                    <h5 class="card-title">@e.postTitle</h5>
+                    <p class="card-text">@e.postContent</p>
+                    <div class="card-footer border-success">@e.timeStamp</div>
+                </div>
+            </div>
+
+        }
+
+    </div>
 </div>
 
